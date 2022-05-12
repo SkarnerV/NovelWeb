@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
+import '../item/bookCover.dart';
+import '../item/bookPage.dart';
+import '../searchPage/SearchPage.dart';
 
-class Shelf extends StatefulWidget {
-  const Shelf({Key? key}) : super(key: key);
+class Shelf extends StatelessWidget {
+  Shelf({Key? key}) : super(key: key);
+
+  final List<String> items = List<String>.generate(10, (i) => 'Book ${i + 1}');
 
   @override
-  ShelfState createState() {
-    return ShelfState();
-  }
-}
-
-class ShelfState extends State<Shelf> {
-  // final _shelfKey = GlobalKey<ShelfState>();
-  final List<String> items = List<String>.generate(10, (i) => 'Item $i');
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'Shelf',
@@ -19,18 +16,41 @@ class ShelfState extends State<Shelf> {
           appBar: AppBar(
             title: const Text('Shelf'),
             leading: IconButton(
-              icon: const Icon(Icons.arrow_back),
+              icon: const Icon(Icons.perm_identity),
               onPressed: () {
                 Navigator.pop(context);
               },
             ),
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.search),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const SearchPage()),
+                  );
+                },
+              ),
+            ],
           ),
           body: ListView.builder(
             itemCount: items.length,
             itemBuilder: (context, index) {
-              return ListTile(
-                title: Text(items[index]),
-              );
+              return InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => BookPage(
+                                name: items[index],
+                                content: "Dudadw",
+                              )),
+                    );
+                  },
+                  child: BookCover(
+                    name: items[index],
+                    image: "public/img/avatar.jpg",
+                  ));
             },
           ),
         ));
