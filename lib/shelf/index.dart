@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../item/bookCover.dart';
 import '../item/bookPage.dart';
-import '../searchPage/SearchPage.dart';
 
 class Shelf extends StatelessWidget {
   Shelf({Key? key}) : super(key: key);
@@ -24,12 +23,7 @@ class Shelf extends StatelessWidget {
             actions: [
               IconButton(
                 icon: const Icon(Icons.search),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const SearchPage()),
-                  );
-                },
+                onPressed: () {},
               ),
             ],
           ),

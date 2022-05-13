@@ -1,26 +1,23 @@
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/material.dart';
 
 class AppText extends StatelessWidget {
-
-  int size;
+  double size;
   final String text;
-  
+  final Color color;
 
-
-
-
-  const AppText({Key? key}) : super(key: key);
+  AppText(
+      {Key? key, this.size = 30, required this.text, this.color = Colors.black})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    
     return Text(
-
-
-    )
-
-
-
+      text,
+      style: TextStyle(
+        color: color,
+        fontSize: size,
+        fontWeight: FontWeight.bold,
+      ),
+    );
   }
 }

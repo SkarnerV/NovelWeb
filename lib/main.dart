@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 // import './login/login.dart';
-import './Pages/home.dart';
+import 'Pages/index.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,8 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Novel Web',
-      home:  HomePage(),
-      
+      home: MainPage(),
     );
   }
 }
