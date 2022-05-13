@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:novel/Pages/shelf.dart';
+import 'package:novel/UI/Pages/shelf.dart';
+import '../../util/colors.dart';
 import 'search.dart';
 import 'profile.dart';
 import 'home.dart';
@@ -13,9 +14,8 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   List pages = [
-    HomePage(),
-    ShelfPage(),
     SearchPage(),
+    ShelfPage(),
     ProfilePage(),
   ];
 
@@ -35,17 +35,16 @@ class _MainPageState extends State<MainPage> {
           selectedFontSize: 0,
           type: BottomNavigationBarType.fixed,
           onTap: onTap,
-          backgroundColor: Color.fromARGB(255, 44, 156, 47),
+          backgroundColor: AppColors.mainColor,
           currentIndex: currentIndex,
-          selectedItemColor: Color.fromARGB(136, 2, 50, 6),
-          unselectedItemColor: Colors.white.withOpacity(0.2),
+          selectedItemColor: AppColors.subColor1,
+          unselectedItemColor: AppColors.whiteOpac(0.5),
           showSelectedLabels: false,
           showUnselectedLabels: false,
           elevation: 0,
           items: [
-            BottomNavigationBarItem(label: 'home', icon: Icon(Icons.home)),
+            BottomNavigationBarItem(label: 'Home', icon: Icon(Icons.home)),
             BottomNavigationBarItem(label: 'Shelf', icon: Icon(Icons.book)),
-            BottomNavigationBarItem(label: 'Search', icon: Icon(Icons.search)),
             BottomNavigationBarItem(
                 label: 'Profile', icon: Icon(Icons.perm_identity)),
           ]),
