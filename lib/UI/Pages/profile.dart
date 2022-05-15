@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:novel/UI/Pages/setting_page.dart';
 import 'package:novel/login/login.dart';
 import 'package:novel/util/colors.dart';
 
@@ -22,7 +23,11 @@ class _ProfilePageState extends State<ProfilePage> {
       children: [
       Expanded(child: Container(),),
       InkWell(
-          onTap: (){},
+          onTap: (){
+             Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SettingPage()),
+                    );
+          },
           child: Icon(Icons.settings),
                 
       )
@@ -34,7 +39,8 @@ class _ProfilePageState extends State<ProfilePage> {
     onTap: () {
       Navigator.push(context,
                     MaterialPageRoute(builder: (context) => Login()),
-                    );},
+                    );
+    },
     child:
     Container(
       decoration: BoxDecoration(
@@ -58,7 +64,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
         ),
       ),
-      SizedBox(width: 200,),
+      Expanded(child: Container(),),
       Icon(Icons.chevron_right_outlined)
     ],)
     ),
