@@ -18,8 +18,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Novel Web',
         home: BlocProvider<AppCubits>(
-          create: (context) => AppCubits(),
-          child: AppCubitLogics(),
-        ));
+            create: (context) => AppCubits(),
+            child: BlocProvider<AppCubits>(
+              create: (context) => AppCubits(),
+              child: AppCubitLogics(),
+            )));
   }
 }

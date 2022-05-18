@@ -5,4 +5,10 @@ class AppCubits extends Cubit<CubitStates> {
   AppCubits() : super(InitialState()) {
     emit(LoginState());
   }
+
+  void Login() {
+    try {
+      emit(HomeState());
+    } catch (e) {}
+  }
 }
