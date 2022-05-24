@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:io';
+import 'dart:convert';
 
 class UserService {
   static void LoginAccount(String un, String pwd) async {
@@ -31,13 +32,15 @@ class UserService {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     cookie = sharedPreferences.get("cookies");
     if (cookie != null) {
+      var allHead = Cookie.fromSetCookieValue(cookie);
+      // var head = allHead[0] + ";" + allHead[1].split(",")[2];
       http.Response res =
           await http.get(Uri.parse(Const.baseUrl + apiUrl), headers: {
         'Content-Type': 'application/json',
-        'Cookie': '$cookie',
+        'Accept': 'application/json',
+        'Cookie': '$allHead',
       });
-      print(res.statusCode);
-      print(cookie);
+      print(allHead);
     }
   }
 }
