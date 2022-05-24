@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:novel/UI/Pages/index.dart';
+import 'package:novel/UI/Pages/main_page.dart';
 import 'package:novel/cubit/app_cubit_states.dart';
 import 'package:novel/cubit/app_cubits.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,7 +20,7 @@ class _AppCubitLogicsState extends State<AppCubitLogics> {
     return Scaffold(
       body: BlocBuilder<AppCubits, CubitStates>(builder: (context, state) {
         if (state is LoginState) {
-          return Login();
+          return LoginPage();
         } else if (state is HomeState) {
           return MainPage();
         } else {

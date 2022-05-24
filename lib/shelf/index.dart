@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../item/bookCover.dart';
-import '../item/bookPage.dart';
+import '../UI/Widgets/item/bookCover.dart';
+import '../UI/Widgets/item/bookPage.dart';
 
 class Shelf extends StatelessWidget {
   Shelf({Key? key}) : super(key: key);

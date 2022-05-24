@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:novel/cubit/app_cubit_logics.dart';
 // import './login/login.dart';
-import 'UI/Pages/index.dart';
+import 'UI/Pages/main_page.dart';
 import 'package:novel/cubit/app_cubit_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:novel/cubit/app_cubits.dart';
@@ -15,13 +15,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'Novel Web',
-        home: BlocProvider<AppCubits>(
-            create: (context) => AppCubits(),
-            child: BlocProvider<AppCubits>(
-              create: (context) => AppCubits(),
-              child: AppCubitLogics(),
-            )));
+    return MaterialApp(title: 'Novel Web', home: MainPage());
   }
 }

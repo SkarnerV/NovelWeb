@@ -40,7 +40,7 @@ dependencies:
   flutter_bloc:
   equatable:
   http:
-
+  shared_preferences: any
 
 dev_dependencies:
   flutter_test:
