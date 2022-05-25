@@ -23,6 +23,8 @@ class _MainPageState extends State<MainPage> {
 
   checkLoginStatus() async {
     sharedPreferences = await SharedPreferences.getInstance();
+    print("check");
+    print(sharedPreferences.getString("cookies"));
     if (sharedPreferences.getString("cookies") == null) {
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(builder: (BuildContext context) => LoginPage()),

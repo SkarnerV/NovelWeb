@@ -82,6 +82,16 @@ class _ProfilePageState extends State<ProfilePage> {
           },
           child: Text("getShelf", style: TextStyle(color: Colors.white)),
         ),
+        ElevatedButton(
+          onPressed: () {
+            UserService.logoutAccount();
+            Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(
+                    builder: (BuildContext context) => LoginPage()),
+                (Route<dynamic> route) => false);
+          },
+          child: Text("logout", style: TextStyle(color: Colors.white)),
+        ),
       ]),
     );
   }
