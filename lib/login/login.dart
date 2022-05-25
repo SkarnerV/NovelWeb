@@ -8,6 +8,7 @@ import '../util/colors.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../services/user_service.dart';
 import 'package:novel/UI/Pages/main_page.dart';
+import 'package:novel/login/register_page.dart';
 
 // Create a Form widget.
 class LoginPage extends StatefulWidget {
@@ -111,7 +112,12 @@ class _LoginPageState extends State<LoginPage> {
                     width: 20,
                   ),
                   InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => RegisterPage()),
+                          (Route<dynamic> route) => false);
+                      },
                       child: AppText(
                         text: "Create Account",
                         size: 12,
