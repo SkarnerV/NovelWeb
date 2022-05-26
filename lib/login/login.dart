@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:novel/UI/Widgets/app_text.dart';
 import 'package:novel/cubit/app_cubit_states.dart';
 import 'package:novel/cubit/app_cubits.dart';
+import 'package:novel/login/register_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../shelf/index.dart';
 import '../util/colors.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../services/user_service.dart';
 import 'package:novel/UI/Pages/main_page.dart';
-import 'package:novel/login/register_page.dart';
 
 // Create a Form widget.
 class LoginPage extends StatefulWidget {
@@ -114,9 +114,10 @@ class _LoginPageState extends State<LoginPage> {
                   InkWell(
                       onTap: () {
                         Navigator.of(context).pushAndRemoveUntil(
-                          MaterialPageRoute(
-                              builder: (BuildContext context) => RegisterPage()),
-                          (Route<dynamic> route) => false);
+                            MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    RegisterPage()),
+                            (Route<dynamic> route) => false);
                       },
                       child: AppText(
                         text: "Create Account",

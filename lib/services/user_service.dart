@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:io';
+import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:cookie_jar/cookie_jar.dart';
@@ -54,5 +55,16 @@ class UserService {
   static void logoutAccount() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     sharedPreferences.remove("cookies");
+  }
+
+  static Future<String> getVerificationCode() async {
+    var apiUrl = "captcha";
+    http.Response res = await http.get(Uri.parse(Const.baseUrl + apiUrl));
+    if (res.statusCode == 200) {
+      var resBody = json.decode(res.body);
+      return resBody['id'];
+    } else {
+      return "";
+    }
   }
 }
