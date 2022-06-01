@@ -4,6 +4,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:novel/util/colors.dart';
 import 'package:novel/UI/Widgets/text_field.dart';
 import 'package:novel/services/user_service.dart';
+import 'package:novel/controller/register_controller.dart';
+import 'package:get/get.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -17,14 +19,8 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController pwdController = new TextEditingController();
   final TextEditingController cpwdController = new TextEditingController();
   final TextEditingController vcController = new TextEditingController();
-  String verificationCode = "";
-
-  @override
-  void initState() {
-    super.initState();
-    UserService.getVerificationCode()
-        .then((code) => {this.verificationCode = code});
-  }
+  final RegisterController registerController = Get.put(RegisterController());
+  
 
   @override
   Widget build(BuildContext context) {
@@ -49,28 +45,41 @@ class _RegisterPageState extends State<RegisterPage> {
                   textController: cpwdController,
                   label: "Confirm Password",
                   icon: Icon(Icons.check)),
-              Image.network('https://api.novel.lolli.tech/captcha' +
-                  this.verificationCode),
+            
               Row(
                 children: [
                   NovelTextField(
                     textController: vcController,
                     label: "Code",
                     icon: Icon(Icons.percent),
-                    width: 200,
+                    width: 170,
                   ),
-                  (() {
-                    return Text("1");
-                  }()),
-                  ElevatedButton(
-                      onPressed: () async {
-                        // await UserService.getVerificationCode()
-                        //     .then((code) => {this.verificationCode = code});
-                        print(this.verificationCode);
-                      },
-                      child: Text("code")),
+                  SizedBox(width: 20,),
+
+                  Obx(() {
+                if (registerController.isLoading.value)
+                  return Center(child: CircularProgressIndicator());
+                else
+                  return Image.network('https://api.novel.lolli.tech/captcha' +
+                        registerController.verificationCode.value);
+                  }),
+
+
+                  
+                  
+                  
+                  
+                 
                 ],
-              )
+                
+              ),
+              //  ElevatedButton(
+              //         onPressed: () async {
+              //           // await UserService.getVerificationCode()
+              //           //     .then((code) => {this.verificationCode = code});
+              //           print(registerController.verificationCode.value);
+              //         },
+              //         child: Text("code")),
             ],
           ),
         ));
